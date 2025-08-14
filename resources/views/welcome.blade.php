@@ -152,7 +152,7 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top bg-white shadow-sm">
+    <nav class="bg-white shadow-sm navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="{{ asset('sakinah_gallery/sakinah_collection_logos2.png') }}" alt="Sakinah Collection Logo" class="w-25">
@@ -164,7 +164,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
+                        <a class="nav-link" href="#home">Homes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#services">Services</a>
@@ -203,11 +203,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-sakinah px-4 py-2" href="{{ route('dashboard') }}">Dashboard</a>
+                            <a class="px-4 py-2 btn btn-sakinah" href="{{ route('dashboard') }}">Dashboard</a>
                         </li>
                     @else
                         <li class="nav-item">
-                            <a class="btn btn-sakinah px-4 py-2" href="{{ route('login') }}">Login</a>
+                            <a class="px-4 py-2 btn btn-sakinah" href="{{ route('login') }}">Login</a>
                         </li>
                     @endauth
                 </ul>
@@ -223,11 +223,11 @@
             Your browser does not support the video tag.
         </video>
         <div class="hero-overlay"></div>
-        <div class="hero-content container">
+        <div class="container hero-content">
             <h1>Welcome To Sakinah Collection</h1>
             <p>Nikmati kemudahan menyewa kostum dan penai profesional untuk acara spesialmu.</p>
             <p>Dari pertunjukan hingga pesta, kami siap bantu wujudkan momen tak terlupakan.</p>
-            <a href="#services" class="btn btn-sakinah mt-3">Booking Now</a>
+            <a href="#services" class="mt-3 btn btn-sakinah">Booking Now</a>
         </div>
     </section>
 
@@ -237,7 +237,7 @@
             <h2 class="section-title">Paket Penari</h2>
             <div class="row">
                 @foreach ($jasas as $jasa)
-                    <div class="col-lg-3 col-6 mb-4">
+                    <div class="mb-4 col-lg-3 col-6">
                         <div class="card">
                             <img src="{{ $jasa->image ? asset('storage/' . $jasa->image) : asset('sakinah_gallery/tari-1.jpg') }}"
                                 class="card-img-top" alt="{{ $jasa->name }}">
@@ -309,7 +309,7 @@
             <h2 class="section-title">Paket Kostum</h2>
             <div class="row">
                 @foreach ($barangs as $barang)
-                    <div class="col-lg-3 col-6 mb-4">
+                    <div class="mb-4 col-lg-3 col-6">
                         <div class="card">
                             <img src="{{ $barang->image ? asset('storage/' . $barang->image) : asset('sakinah_gallery/tari-1.jpg') }}"
                                 class="card-img-top" alt="{{ $barang->name }}">
