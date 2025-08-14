@@ -165,6 +165,9 @@
                             <button type="submit"
                                 class="inline-block px-8 py-3 bg-[#d4af37] text-white font-semibold rounded-lg shadow-md hover:bg-[#b8972e] transition-colors focus:ring-2 focus:ring-[#d4af37]"
                                 aria-label="Proceed to checkout">Checkout</button>
+                            <a href="/#services"
+                                class="inline-block px-8 py-3 bg-lime-500 text-white font-semibold rounded-lg shadow-md hover:bg-lime-300 transition-colors focus:ring-2 focus:ring-[#d4af37]"
+                                aria-label="Proceed to checkout">Add Product</a>
                         </form>
                     @endif
                 </div>

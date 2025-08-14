@@ -6,12 +6,20 @@ use App\Models\Transaction;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class TransactionReportExport implements FromCollection, WithHeadings, WithMapping
+class TransactionReportExport implements FromCollection, WithHeadings, WithMapping, ShouldAutoSize
 {
+    protected $transactions;
+
+    public function __construct($transactions)
+    {
+        $this->transactions = $transactions;
+    }
+
     public function collection()
     {
-        return Transaction::with(['user', 'items.barang', 'items.jasa'])->get();
+        return $this->transactions;
     }
 
     public function headings(): array
@@ -22,24 +30,25 @@ class TransactionReportExport implements FromCollection, WithHeadings, WithMappi
             'Items',
             'Total Price',
             'Status',
-            'Date',
+            'Date'
         ];
     }
 
     public function map($transaction): array
     {
-        $items = $transaction->items->map(function ($item) {
-            $name = $item->barang ? $item->barang->name : ($item->jasa ? $item->jasa->name : 'N/A');
-            return $name . ' (Qty: ' . $item->quantity . ')';
-        })->implode(', ');
+        $items = '';
+        foreach ($transaction->items as $item) {
+            $items .= ($item->barang ? $item->barang->name : ($item->jasa ? $item->jasa->name : 'N/A'))
+                   . ' (Qty: ' . $item->quantity . ')' . "\n";
+        }
 
         return [
             $transaction->id,
             $transaction->user ? $transaction->user->name : 'N/A',
             $items,
-            number_format($transaction->total_price, 2),
+            'Rp ' . number_format($transaction->total_price, 2),
             $transaction->status,
-            $transaction->created_at->format('Y-m-d H:i:s'),
+            $transaction->created_at->format('Y-m-d H:i:s')
         ];
     }
 }

@@ -26,6 +26,7 @@
                                 <tr class="bg-[#d4af37] text-white">
                                     <th class="p-3 text-left">Name</th>
                                     <th class="p-3 text-left">Price</th>
+                                    <th class="p-3 text-left">Deskripsi</th>
                                     <th class="p-3 text-left">Image</th>
                                     <th class="p-3 text-left">Actions</th>
                                 </tr>
@@ -35,6 +36,7 @@
                                     <tr class="border-b border-gray-200 hover:bg-gray-50">
                                         <td class="p-3">{{ $jasa->name }}</td>
                                         <td class="p-3">Rp. {{ number_format($jasa->price, 2) }}</td>
+                                        <td class="p-3">{{ $jasa->description }}</td>
                                         <td class="p-3">
                                             @if ($jasa->image)
                                                 <img src="{{ asset('storage/' . $jasa->image) }}"

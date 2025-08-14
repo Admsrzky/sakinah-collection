@@ -131,7 +131,6 @@ class TransactionController extends Controller
                 'Transaction created successfully! Awaiting admin approval.';
 
             return redirect()->route('transactions.show', $transaction)->with('success', $message);
-
         } catch (\Exception $e) {
             DB::rollBack();
 
@@ -194,7 +193,6 @@ class TransactionController extends Controller
 
             return redirect()->route('transactions.show', $transaction)
                 ->with('success', 'Remaining payment proof uploaded successfully. Awaiting approval.');
-
         } catch (\Exception $e) {
             Log::error('Failed to upload remaining payment proof: ' . $e->getMessage(), [
                 'transaction_id' => $transaction->id,

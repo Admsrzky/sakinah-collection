@@ -6,7 +6,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="container mx-auto p-6">
-                    <h1 class="text-3xl font-bold mb-6 text-center" style="color: #d4af37;">Create New User</h1>
+                    <h1 class="text-3xl font-bold mb-6 text-center" style="color: #8d37d4;">Create New User</h1>
 
                     @if ($errors->any())
                         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">

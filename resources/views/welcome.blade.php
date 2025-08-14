@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,17 +16,22 @@
             color: #f5f5f5;
             font-family: 'Playfair Display', serif;
         }
+
         .navbar {
             background-color: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
         }
-        .navbar-brand, .nav-link {
+
+        .navbar-brand,
+        .nav-link {
             color: #d4af37 !important;
             transition: color 0.3s ease;
         }
+
         .nav-link:hover {
             color: #ffffff !important;
         }
+
         .hero {
             position: relative;
             height: 100vh;
@@ -34,6 +40,7 @@
             text-align: center;
             overflow: hidden;
         }
+
         .hero-video {
             position: absolute;
             top: 0;
@@ -43,6 +50,7 @@
             object-fit: cover;
             z-index: 0;
         }
+
         .hero-overlay {
             background: rgba(0, 0, 0, 0.6);
             position: absolute;
@@ -52,18 +60,22 @@
             height: 100%;
             z-index: 1;
         }
+
         .hero-content {
             z-index: 2;
         }
+
         .hero h1 {
             font-size: 4rem;
             color: #d4af37;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
+
         .hero p {
             font-size: 1.5rem;
             color: #f5f5f5;
         }
+
         .btn-sakinah {
             background-color: #d4af37;
             color: #1a1a1a;
@@ -72,70 +84,85 @@
             font-size: 1.2rem;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
+
         .btn-sakinah:hover {
             background-color: #b8972e;
             transform: scale(1.05);
         }
+
         .section-title {
             color: #d4af37;
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 2rem;
         }
+
         .card {
             background-color: #2a2a2a;
             border: none;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
+
         .card-img-top {
             height: 200px;
             object-fit: cover;
         }
+
         .card-title {
             color: #d4af37;
         }
+
         .footer {
             background-color: #0f0f0f;
             padding: 2rem 0;
             color: #d4af37;
             text-align: center;
         }
+
         .modal-content {
             background-color: #2a2a2a;
             color: #f5f5f5;
         }
-        .modal-header, .modal-footer {
-            border-color: #d4af37;
+
+        .modal-header,
+        .modal-footer {
+            border-color: #374ed4;
         }
+
         .modal-title {
-            color: #d4af37;
+            color: #374ed4;
         }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
+
             .hero p {
                 font-size: 1.2rem;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="{{ asset('sakinah_gallery/sakinah_collection_logos2.png') }}" alt="" class="w-25">
+                <img src="{{ asset('sakinah_gallery/sakinah_collection_logos2.png') }}" alt="Sakinah Collection Logo" class="w-25">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
                         <a class="nav-link" href="#home">Home</a>
                     </li>
@@ -148,9 +175,32 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
+
                     @auth
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cart.index') }}">Cart</a>
+                        <li class="nav-item position-relative me-2">
+                            <a class="nav-link d-flex align-items-center position-relative" href="{{ route('cart.index') }}" aria-label="Cart">
+                                <!-- Cart Icon (Bootstrap icon fallback if available) -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="bi bi-cart3" viewBox="0 0 16 16" aria-hidden="true">
+                                    <path d="M0 1.5A.5.5 0 0 1 .5 1h1a.5.5 0 0 1 .485.379L2.89 5H14.5a.5.5 0 0 1 .49.598l-1.5 6A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.49-.402L1.61 3H.5a.5.5 0 0 1-.5-.5z"/>
+                                    <path d="M5.5 13a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm7 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                                </svg>
+
+                                @php
+                                    // Preferably move this logic to controller and pass $cartCount to view for cleaner separation.
+                                    $cartCount = App\Models\Cart::where('user_id', auth()->id())->count();
+                                @endphp
+
+                                @if ($cartCount > 0)
+                                    <span
+                                        class="badge bg-danger rounded-pill position-absolute"
+                                        style="top: 0; right: 0; transform: translate(50%, -50%); font-size: 0.625rem; min-width:1.5rem; height:1.5rem; display:flex; align-items:center; justify-content:center;"
+                                        aria-label="{{ $cartCount }} items in cart">
+                                        {{ $cartCount }}
+                                    </span>
+                                @endif
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-sakinah px-4 py-2" href="{{ route('dashboard') }}">Dashboard</a>
@@ -165,35 +215,39 @@
         </div>
     </nav>
 
+
     <!-- Hero Section -->
     <section id="home" class="hero">
         <video class="hero-video" autoplay loop muted playsinline>
-            <source src="{{ asset('sakinah_gallery/video-background.mp4') }}" type="video/mp4">
+            <source src="{{ asset('sakinah_gallery/Nari.mp4') }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="hero-overlay"></div>
         <div class="hero-content container">
-            <h1>Elevate Your Event</h1>
-            <p>Exquisite Costume Booking & Professional Dancer Services by Sakinah Collection</p>
-            <a href="#services" class="btn btn-sakinah mt-3">Discover Now</a>
+            <h1>Welcome To Sakinah Collection</h1>
+            <p>Nikmati kemudahan menyewa kostum dan penai profesional untuk acara spesialmu.</p>
+            <p>Dari pertunjukan hingga pesta, kami siap bantu wujudkan momen tak terlupakan.</p>
+            <a href="#services" class="btn btn-sakinah mt-3">Booking Now</a>
         </div>
     </section>
 
     <!-- Services Section -->
     <section id="services" class="py-5">
         <div class="container">
-            <h2 class="section-title">Our Premium Services</h2>
+            <h2 class="section-title">Paket Penari</h2>
             <div class="row">
                 @foreach ($jasas as $jasa)
                     <div class="col-lg-3 col-6 mb-4">
                         <div class="card">
-                            <img src="{{ $jasa->image ? asset('storage/' . $jasa->image) : asset('sakinah_gallery/tari-1.jpg') }}" class="card-img-top" alt="{{ $jasa->name }}">
+                            <img src="{{ $jasa->image ? asset('storage/' . $jasa->image) : asset('sakinah_gallery/tari-1.jpg') }}"
+                                class="card-img-top" alt="{{ $jasa->name }}">
                             <div class="card-body">
                                 <h3 class="card-title fw-bold">{{ $jasa->name }}</h3>
                                 <h4 class="text-white"><strong>Rp. {{ number_format($jasa->price, 2) }}</strong></h4>
                                 <p class="text-white">{{ $jasa->description ?? 'Sewa/performance/pentas' }}</p>
                                 <hr>
-                                <button class="btn btn-sakinah me-2" data-bs-toggle="modal" data-bs-target="#jasaModal{{ $jasa->id }}">Details</button>
+                                <button class="btn btn-sakinah me-2" data-bs-toggle="modal"
+                                    data-bs-target="#jasaModal{{ $jasa->id }}">Details</button>
                                 @auth
                                     <form action="{{ route('cart.add') }}" method="POST" style="display:inline;">
                                         @csrf
@@ -202,27 +256,34 @@
                                         <button type="submit" class="btn btn-sakinah btn-sm">Add to Cart</button>
                                     </form>
                                 @else
-                                    <a href="{{ route('register') }}" class="btn btn-sakinah btn-sm">Login to Add to Cart</a>
+                                    <a href="{{ route('register') }}" class="btn btn-sakinah btn-sm">Login to Add to
+                                        Cart</a>
                                 @endauth
                             </div>
                         </div>
                     </div>
 
                     <!-- Jasa Modal -->
-                    <div class="modal fade" id="jasaModal{{ $jasa->id }}" tabindex="-1" aria-labelledby="jasaModalLabel{{ $jasa->id }}" aria-hidden="true">
+                    <div class="modal fade" id="jasaModal{{ $jasa->id }}" tabindex="-1"
+                        aria-labelledby="jasaModalLabel{{ $jasa->id }}" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="jasaModalLabel{{ $jasa->id }}">{{ $jasa->name }} Details</h5>
-                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <h5 class="modal-title" id="jasaModalLabel{{ $jasa->id }}">
+                                        {{ $jasa->name }}
+                                        Details</h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <p><strong>Price:</strong> Rp. {{ number_format($jasa->price, 2) }}</p>
                                     <p><strong>Details:</strong></p>
-                                    <p>{{ $jasa->description ?? 'Professional dancer services tailored to your event.' }}</p>
+                                    <p>{{ $jasa->description ?? 'Professional dancer services tailored to your event.' }}
+                                    </p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-sakinah" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-sakinah"
+                                        data-bs-dismiss="modal">Close</button>
                                     @auth
                                         <form action="{{ route('cart.add') }}" method="POST" style="display:inline;">
                                             @csrf
@@ -245,18 +306,21 @@
     <!-- Products Section -->
     <section id="products" class="py-5">
         <div class="container">
-            <h2 class="section-title">Our Premium Products</h2>
+            <h2 class="section-title">Paket Kostum</h2>
             <div class="row">
                 @foreach ($barangs as $barang)
                     <div class="col-lg-3 col-6 mb-4">
                         <div class="card">
-                            <img src="{{ $barang->image ? asset('storage/' . $barang->image) : asset('sakinah_gallery/tari-1.jpg') }}" class="card-img-top" alt="{{ $barang->name }}">
+                            <img src="{{ $barang->image ? asset('storage/' . $barang->image) : asset('sakinah_gallery/tari-1.jpg') }}"
+                                class="card-img-top" alt="{{ $barang->name }}">
                             <div class="card-body">
                                 <h3 class="card-title fw-bold">{{ $barang->name }}</h3>
-                                <h4 class="text-white"><strong>Rp. {{ number_format($barang->price, 2) }}</strong></h4>
+                                <h4 class="text-white"><strong>Rp. {{ number_format($barang->price, 2) }}</strong>
+                                </h4>
                                 <p class="text-white">{{ $barang->description ?? 'Costume rental for events.' }}</p>
                                 <hr>
-                                <button class="btn btn-sakinah me-2" data-bs-toggle="modal" data-bs-target="#barangModal{{ $barang->id }}">Details</button>
+                                <button class="btn btn-sakinah me-2" data-bs-toggle="modal"
+                                    data-bs-target="#barangModal{{ $barang->id }}">Details</button>
                                 @auth
                                     <form action="{{ route('cart.add') }}" method="POST" style="display:inline;">
                                         @csrf
@@ -265,19 +329,23 @@
                                         <button type="submit" class="btn btn-sakinah btn-sm">Add to Cart</button>
                                     </form>
                                 @else
-                                    <a href="{{ route('login') }}" class="btn btn-sakinah btn-sm">Login to Add to Cart</a>
+                                    <a href="{{ route('login') }}" class="btn btn-sakinah btn-sm">Login to Add to
+                                        Cart</a>
                                 @endauth
                             </div>
                         </div>
                     </div>
 
                     <!-- Barang Modal -->
-                    <div class="modal fade" id="barangModal{{ $barang->id }}" tabindex="-1" aria-labelledby="barangModalLabel{{ $barang->id }}" aria-hidden="true">
+                    <div class="modal fade" id="barangModal{{ $barang->id }}" tabindex="-1"
+                        aria-labelledby="barangModalLabel{{ $barang->id }}" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="barangModalLabel{{ $barang->id }}">{{ $barang->name }} Details</h5>
-                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <h5 class="modal-title" id="barangModalLabel{{ $barang->id }}">
+                                        {{ $barang->name }} Details</h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <p><strong>Price:</strong> Rp. {{ number_format($barang->price, 2) }}</p>
@@ -285,7 +353,8 @@
                                     <p>{{ $barang->description ?? 'High-quality costume for your event.' }}</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-sakinah" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-sakinah"
+                                        data-bs-dismiss="modal">Close</button>
                                     @auth
                                         <form action="{{ route('cart.add') }}" method="POST" style="display:inline;">
                                             @csrf
@@ -341,4 +410,5 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

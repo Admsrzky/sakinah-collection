@@ -12,11 +12,19 @@ use App\Models\Transaction;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Route;
 
+// Route::get('/', function () {
+//     $jasas = App\Models\Jasa::all();
+//     $barangs = App\Models\Barang::all();
+//     return view('welcome', compact('jasas', 'barangs'));
+// });
+
+
 Route::get('/', function () {
     $jasas = App\Models\Jasa::all();
     $barangs = App\Models\Barang::all();
     return view('welcome', compact('jasas', 'barangs'));
-});
+})->name('welcome');
+
 
 Route::get('/dashboard', function () {
     $totalTransactions = Transaction::count();

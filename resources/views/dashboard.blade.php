@@ -15,7 +15,7 @@
                     <p class="text-gray-600 mt-2 text-sm sm:text-base">Total Transactions: {{ number_format($totalTransactions) }}</p>
                     <p class="text-gray-600 text-sm sm:text-base">Active Carts: {{ number_format($activeCarts) }}</p>
                     <a href="{{ route('admin.transactions.index') }}"
-                       class="mt-4 bg-[#d4af37] text-white px-4 py-2 rounded hover:bg-[#b8972e] text-sm sm:text-base w-full sm:w-auto text-center">
+                       class="mt-4 bg-[#374ed4] text-white px-4 py-2 rounded hover:bg-[#b8972e] text-sm sm:text-base w-full sm:w-auto text-center">
                         View Transactions
                     </a>
                 </div>
@@ -25,7 +25,7 @@
                     <p class="text-gray-600 mt-2 text-sm sm:text-base">This Month: Rp {{ number_format($currentMonthRevenue, 2) }}</p>
                     <p class="text-gray-600 text-sm sm:text-base">Growth: {{ $revenueGrowth }}%</p>
                     <a href="{{ route('admin.reports.index') }}"
-                       class="mt-4 bg-[#d4af37] text-white px-4 py-2 rounded hover:bg-[#b8972e] text-sm sm:text-base w-full sm:w-auto text-center">
+                       class="mt-4 bg-[#374ed4] text-white px-4 py-2 rounded hover:bg-[#b8972e] text-sm sm:text-base w-full sm:w-auto text-center">
                         View Report
                     </a>
                 </div>
@@ -35,7 +35,7 @@
                     <p class="text-gray-600 mt-2 text-sm sm:text-base">Pending: {{ number_format($pendingTransactions) }}</p>
                     <p class="text-gray-600 text-sm sm:text-base">Completed: {{ number_format($completedTransactions) }}</p>
                     <a href="{{ route('admin.transactions.index') }}"
-                       class="mt-4 bg-[#d4af37] text-white px-4 py-2 rounded hover:bg-[#b8972e] text-sm sm:text-base w-full sm:w-auto text-center">
+                       class="mt-4 bg-[#374ed4] text-white px-4 py-2 rounded hover:bg-[#b8972e] text-sm sm:text-base w-full sm:w-auto text-center">
                         Manage Transactions
                     </a>
                 </div>
